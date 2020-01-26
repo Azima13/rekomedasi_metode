@@ -1,21 +1,26 @@
 <?php
 
-//-- database configurations
-$dbhost='localhost';
-$dbuser='root';
-$dbpass='';
-$dbname='db_wisata_lombok';
-//-- database connections
-$db=new mysqli($dbhost,$dbuser,$dbpass,$dbname);
-//-- halt and show error message if connection fail
+include 'config.php';
+
 if ($db->connect_error) {
     die('Connect Error ('.$db->connect_errno.')'.$db->connect_error);
 }
 ?>
-<form method="post">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+<form method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 align-center">
 <!-- menampilkan daftar Kriteria-->
 <?php
-$sqli="SELECT * FROM ds_evidences";
+$sqli="SELECT id, code, name FROM ds_evidences ORDER BY code ASC ";
 $result=$db->query($sqli);
 while($row=$result->fetch_object()){
     echo "<input type='checkbox' name='evidence[]' value='{$row->id}'"
@@ -38,10 +43,12 @@ if(isset($_POST['evidence'])){
             WHERE a.id_evidence IN(".implode(',',$_POST['evidence']).")
             GROUP BY a.id_evidence";
         $result=$db->query($sql);
-        $evidence=array();
+        $evidence = array();
+
         while($row=$result->fetch_row()){
             $evidence[]=$row;
         }
+
         //--- menentukan environement
         $sql="SELECT GROUP_CONCAT(code) FROM ds_problems";
         $result=$db->query($sql);
@@ -116,3 +123,9 @@ if(isset($_POST['evidence'])){
         echo "Terdeteksi Daerah Wisata <b>{$row[0]}</b> dengan derajat kepercayaan ".round($densitas_baru[$codes[0]]*100,2)."%";
     }
 }
+?>
+</div>
+</body>
+</html>
+
+
