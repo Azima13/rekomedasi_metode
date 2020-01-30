@@ -1,8 +1,8 @@
 <?php
 
 //-- database configurations
-$dbhost='wisata-sql.mysql.database.azure.com';
-$dbuser='mysqldbuser@wisata-sql';
+$dbhost='';
+$dbuser='';
 $dbpass='';
 $dbname='';
 //-- database connections
