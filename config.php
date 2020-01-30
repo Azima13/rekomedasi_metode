@@ -3,8 +3,8 @@
 //-- database configurations
 $dbhost='wisata-sql.mysql.database.azure.com';
 $dbuser='mysqldbuser@wisata-sql';
-$dbpass='azima0311#';
-$dbname='wisata-sql';
+$dbpass='';
+$dbname='';
 //-- database connections
 $db=new mysqli($dbhost,$dbuser,$dbpass,$dbname);
 //-- halt and show error message if connection fail
