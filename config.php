@@ -3,7 +3,7 @@
 //-- database configurations
 $dbhost='wisata-sql.mysql.database.azure.com';
 $dbuser='mysqldbuser@wisata-sql';
-$dbpass='';
+$dbpass='azima0311#';
 $dbname='wisata-sql';
 //-- database connections
 $db=new mysqli($dbhost,$dbuser,$dbpass,$dbname);
