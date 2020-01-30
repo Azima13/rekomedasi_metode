@@ -2,8 +2,8 @@
 
 //-- database configurations
 $dbhost='localhost';
-$dbuser='admin';
-$dbpass='password';
+$dbuser='';
+$dbpass='';
 $dbname='db_wisata_lombok';
 //-- database connections
 $db=new mysqli($dbhost,$dbuser,$dbpass,$dbname);
